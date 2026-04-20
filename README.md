@@ -1,140 +1,81 @@
-# ExamSchedule-Management
+# ExamSchedule-Management (Cloudflare Workers 版)
 
-## 项目简介
+本仓库已改造为 **全站运行在 Cloudflare Workers**：
+- 动态页面/路由：Workers (`src/worker.ts`)
+- 数据存储：**仅 Cloudflare KV**（不使用 D1 / R2 / 外部数据库）
+- 静态资源：Workers Static Assets（`public/`）
 
-ExamSchedule-Management 是一个基于 PHP + SQLite 的考试看板与排考管理系统，支持多用户权限管理、考试配置的可视化编辑、考试信息的放映展示等功能。前端采用 Material Design 2 蓝色风格，支持移动端和大屏显示。
+## 功能概览
 
----
+- 主页查询配置：`/` 或 `/index.php`
+- 放映端：`/present/index.html?configId=...`
+- API：`/api/get_config.php?id=...`
+- 后台：
+  - 登录：`/admin/index.php`
+  - 配置管理：`/admin/manage_configs.php`、`/admin/edit_config.php`
+  - 用户管理（管理员）：`/admin/manage_users.php`、`/admin/edit_user.php`
 
-## 主要功能
+> 路由尽量兼容原 PHP URL，便于平滑迁移。
 
-- **考试看板主页**：输入配置ID，查询并高亮显示考试安排 JSON，支持一键放映。
-- **考试放映页**：大屏展示考试安排，实时显示当前科目、倒计时、考试状态等。
-- **后台管理**：
-  - 登录/登出
-  - 配置管理（增删改查，图形化编辑考试安排）
-  - 用户管理（管理员可增删改用户，普通用户仅可管理配置）
-  - 权限分级（管理员/普通用户）
-- **主题与设置**：支持主题切换、页面缩放、考场号自定义等。
-- **本地配置导入/导出**：支持 JSON 配置文件的导入与本地存储。
+## 默认管理员账号与密码
 
----
+在 `src/worker.ts` 顶部常量中固定配置（按你的要求采用固定写死方案）：
 
-## 文件结构
+- `DEFAULT_ADMIN_USERNAME = 'admin'`
+- `DEFAULT_ADMIN_PASSWORD = 'admin123456'`
 
-```
-/ExamSchedule-Management
-├── admin/                # 后台管理相关页面
-├── api/                  # API接口
-├── assets/               # 公共样式、图标
-├── data/                 # SQLite数据库及初始化脚本
-├── present/              # 放映端页面及脚本
-├── index.php             # 主页（配置查询入口）
-├── README.md             # 项目说明
-```
+首次访问时会自动初始化到 KV（若不存在）。
 
----
+⚠️ **安全提示**：该默认管理员密码是按需求固定写在代码里的，仅适合内网/演示。上线前请务必修改 `src/worker.ts` 中的 `DEFAULT_ADMIN_PASSWORD`。
 
-## 快速部署
+## 1) 创建 KV Namespace
 
-1. **环境要求**
-   - PHP 7.4+
-   - SQLite3
-   - 推荐 Nginx/Apache
-
-2. **初始化数据库**
-
-   ```bash
-   php data/init_db.php
-   ```
-
-   初始化后会输出管理员账号和密码，以及示例配置ID。
-
-3. **启动服务**
-
-   - 将项目目录部署到支持 PHP 的 Web 服务器。
-   - 访问 `http://your-server/index.php` 进入主页。
-
-4. **可选环境变量**
-
-  支持通过以下环境变量定制 SQLite 数据文件的位置：
-
-  | 变量名 | 说明 | 默认值 |
-  | --- | --- | --- |
-  | `EXAM_DB_PATH` | 指定完整的数据库文件路径（最高优先级）。 | 空 |
-  | `EXAM_DB_DIR` | 指定数据库文件所在目录。与 `EXAM_DB_NAME` 联用。 | `项目根目录/data` |
-  | `EXAM_DB_NAME` | 指定数据库文件名。仅当未提供 `EXAM_DB_PATH` 时生效。 | `exam.db` |
-
-  - 若设置了 `EXAM_DB_PATH`，将直接使用该路径，忽略其他变量。
-  - 若仅设置 `EXAM_DB_DIR` 和/或 `EXAM_DB_NAME`，系统会按目录+文件名组合路径，并在目录不存在时尝试自动创建。
-  - 在命令行初始化或运行脚本时，可使用 `EXAM_DB_PATH=/var/data/exam.db php data/init_db.php` 的方式临时指定。
-
----
-
-## 使用说明
-
-### 主页
-
-- 输入配置ID，点击“查询考试安排”按钮，页面上方会高亮显示对应 JSON 配置内容。
-- 点击“放映”按钮进入大屏放映模式。
-
-### 后台管理
-
-- 右上角点击“登录”进入后台，使用管理员或普通用户账号登录。
-- 管理员可管理所有用户和配置，普通用户仅可管理配置。
-- 配置管理支持图形化编辑考试安排（科目、时间、考场号等）。
-- 用户管理支持增删改用户（仅管理员）。
-
-### 放映端
-
-- 展示考试安排、当前科目、考试倒计时、状态等。
-- 支持全屏、主题切换、页面缩放、考场号自定义等设置。
-
----
-
-## 配置文件格式
-
-```json
-{
-  "examName": "期末考试",
-  "message": "请提前10分钟进入考场",
-  "room": "room301",
-  "examInfos": [
-    {
-      "name": "数学",
-      "start": "2023-12-01T09:00:00",
-      "end": "2023-12-01T11:00:00"
-    },
-    {
-      "name": "英语",
-      "start": "2023-12-01T13:00:00",
-      "end": "2023-12-01T15:00:00"
-    }
-  ]
-}
+```bash
+npx wrangler kv namespace create EXAM_KV
+npx wrangler kv namespace create EXAM_KV --preview
 ```
 
----
+将返回的 `id` / `preview_id` 填入 `wrangler.toml`：
 
-## 常见问题
+```toml
+[[kv_namespaces]]
+binding = "EXAM_KV"
+id = "你的生产ID"
+preview_id = "你的预览ID"
+```
 
-- **如何修改管理员密码？**
-  - 后台用户管理中可修改密码，或直接在数据库中重置。
+## 2) 本地开发
 
-- **如何导入本地配置？**
-  - 放映端设置中可导入 JSON 配置文件，或通过后台管理配置。
+```bash
+npx wrangler dev
+```
 
-- **如何自定义主题？**
-  - 放映端设置中可切换主题，支持自定义主题包。
+默认会启动本地 Workers，并使用 `public/` 目录作为静态资源。
 
----
+## 3) 部署
 
-## License
+```bash
+npx wrangler deploy
+```
 
-GPL3 License
+## 目录说明
 
----
+```text
+src/worker.ts      # Workers 入口、路由、KV 数据访问层、页面渲染
+public/assets      # 原站静态资源（CSS 等）
+public/present     # 放映端静态页面与脚本
+wrangler.toml      # Workers + KV + static assets 配置
+```
 
-## 联系与支持
+## KV Key 设计（小数据量场景）
 
-如有问题或建议，请提交 Issue 或联系开发者。
+- 用户：
+  - `users:index`（用户名数组）
+  - `user:{username}`（用户详情 JSON）
+- 配置：
+  - `configs:index`（配置 ID 数组）
+  - `config:{id}`（配置 JSON）
+- 会话：
+  - `session:{token}`（登录会话 JSON，TTL 7 天）
+
+数据规模很小（<=10条）时，该结构足够简单直接。
