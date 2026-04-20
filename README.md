@@ -26,6 +26,8 @@
 
 首次访问时会自动初始化到 KV（若不存在）。
 
+⚠️ **安全提示**：该默认管理员密码是按需求固定写在代码里的，仅适合内网/演示。上线前请务必修改 `src/worker.ts` 中的 `DEFAULT_ADMIN_PASSWORD`。
+
 ## 1) 创建 KV Namespace
 
 ```bash

@@ -112,6 +112,10 @@ document.addEventListener("DOMContentLoaded", () => {
             errorSystem.show("未提供配置ID，请从主页进入");
             return;
         }
+        if (!/^[a-zA-Z0-9_-]+$/.test(configId)) {
+            errorSystem.show("配置ID格式错误");
+            return;
+        }
 
         stopTimers();
 

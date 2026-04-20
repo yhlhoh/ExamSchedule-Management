@@ -498,7 +498,7 @@ function layout(title: string, content: string): Response {
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>${escapeHtml(title)}</title>
 <link rel="stylesheet" href="/assets/md2-blue.css" />
-<link href="https://fonts.googleapis.cn/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <style>
 body{font-family:Roboto,Arial,sans-serif;background:#f5f7fa;margin:0}
 .navbar{background:#1976d2;color:#fff;padding:16px 24px;display:flex;align-items:center;gap:8px}
