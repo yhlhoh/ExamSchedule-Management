@@ -24,11 +24,11 @@ const filesToCopy = [
 mkdirSync('public/present/liquid-glass-react', { recursive: true });
 for (const [source, target] of filesToCopy) {
   if (!existsSync(source)) {
-    throw new Error(`Missing required source file: ${source}`);
+    throw new Error(`Build step "copy assets" failed: missing source file ${source}. Please check out the repository fully and run npm run build:liquid-glass from repo root.`);
   }
   try {
     cpSync(source, target);
   } catch (error) {
-    throw new Error(`Failed to copy ${source} -> ${target}: ${error instanceof Error ? error.message : String(error)}`);
+    throw new Error(`Build step "copy assets" failed while copying ${source} -> ${target}. Verify file permissions and target directory write access. Cause: ${error instanceof Error ? error.message : String(error)}`);
   }
 }

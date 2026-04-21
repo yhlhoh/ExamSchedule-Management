@@ -156,6 +156,10 @@ a.back-link:hover {
 }
 
 @media (prefers-reduced-motion: reduce) {
+    body {
+        background: linear-gradient(135deg, var(--bg-1), var(--bg-2));
+    }
+
     a.back-link {
         transition: none;
     }
