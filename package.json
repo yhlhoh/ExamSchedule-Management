@@ -1,0 +1,17 @@
+{
+  "name": "examschedule-management",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build:liquid-glass": "node scripts/build-liquid-glass.mjs"
+  },
+  "type": "module",
+  "dependencies": {
+    "liquid-glass-react": "^1.1.1",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.0"
+  }
+}
