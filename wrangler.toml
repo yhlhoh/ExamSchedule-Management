@@ -3,9 +3,9 @@ main = "src/worker.ts"
 compatibility_date = "2026-04-20"
 
 [[kv_namespaces]]
-binding = "EXAM_KV"
-id = "REPLACE_WITH_YOUR_KV_NAMESPACE_ID"
-preview_id = "REPLACE_WITH_YOUR_PREVIEW_KV_NAMESPACE_ID"
+binding = "KV"
+"id": "8f42765ed2f9411aa5981994b75245b8"
+"preview_id": "<ID_OF_PREVIEW_KV_NAMESPACE_FOR_LOCAL_DEVELOPMENT>"
 
 [assets]
 directory = "./public"
