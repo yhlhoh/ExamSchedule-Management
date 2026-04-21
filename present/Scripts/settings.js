@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
         zoomLevel = 1;
     }
     zoomLevel = Math.min(MAX_USER_ZOOM, Math.max(MIN_USER_ZOOM, zoomLevel));
-    let currentTheme = getCookie("currentTheme") || "ealg";
+    let currentTheme = sanitizeThemePath(getCookie("currentTheme")) || "ealg";
     let theme = getCookie("theme") || "dark";
     let isAutoToggle = getCookie("autoToggle") || false;
     let themeConfig = [];
@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
     autoToggle.checked = isAutoToggle === "true";
 
     // 初始化主题
-    const currentThemePath = `Styles/${currentTheme}/${theme}.css`;
+    const currentThemePath = `Styles/${sanitizeThemePath(currentTheme)}/${theme}.css`;
     themeLink.href = currentThemePath;
     themeToggle.checked = theme === "light";
 
@@ -57,8 +57,14 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .catch(error => errorSystem.show('加载主题配置失败: ' + error.message));
 
+    // 校验主题路径，防止路径穿越注入（仅允许字母/数字/下划线/连字符）
+    function sanitizeThemePath(value) {
+        const text = String(value || "");
+        return /^[a-zA-Z0-9_-]+$/.test(text) ? text : "ealg";
+    }
+
     function updateThemeLink() {
-        const themePath = currentTheme;
+        const themePath = sanitizeThemePath(currentTheme);
         const isDark = !themeToggle.checked;
         themeLink.href = `Styles/${themePath}/${isDark ? 'dark' : 'light'}.css`;
     }
@@ -96,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             zoomLevel = Math.min(MAX_USER_ZOOM, Math.max(MIN_USER_ZOOM, zoomLevel));
             theme = themeToggle.checked ? "light" : "dark";
-            currentTheme = themeSelect.value;
+            currentTheme = sanitizeThemePath(themeSelect.value);
             isAutoToggle = autoToggle.checked;
             setCookie("offsetTime", offsetTime, 365);
             setCookie("room", room, 365);
@@ -125,7 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     themeSelect.addEventListener("change", () => {
-        currentTheme = themeSelect.value;
+        currentTheme = sanitizeThemePath(themeSelect.value);
         updateThemeLink();
     });
 

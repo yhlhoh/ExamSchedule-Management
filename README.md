@@ -61,11 +61,46 @@ npx wrangler deploy
 ## 目录说明
 
 ```text
-src/worker.ts      # Workers 入口、路由、KV 数据访问层、页面渲染
-public/assets      # 原站静态资源（CSS 等）
-public/present     # 放映端静态页面与脚本
-wrangler.toml      # Workers + KV + static assets 配置
+src/worker.ts                   # Workers 入口、路由、KV 数据访问层、页面渲染
+public/assets                   # 原站静态资源（CSS 等）
+public/present                  # 放映端静态页面与脚本
+public/present/Styles/          # 主题 CSS 目录（同步于 present/Styles/）
+wrangler.toml                   # Workers + KV + static assets 配置
 ```
+
+## 主题（Themes）
+
+放映端（`/present/index.html`）支持多套主题，可在页面右上角"设置"弹窗中切换。
+
+主题配置文件：`public/present/Styles/profile.json`（开发时同步至 `present/Styles/profile.json`）
+
+| 主题名称              | 目录            | 亮/暗色 CSS              | 说明                      |
+|-----------------------|-----------------|--------------------------|---------------------------|
+| ExamAware 旧版        | `ealg/`         | light.css / dark.css     | 早期 ExamAware 风格       |
+| ExamSchedule 旧版     | `old/`          | light.css / dark.css     | 早期 ExamSchedule 风格    |
+| Material Design 3     | `md3/`          | light.css / dark.css     | Google MD3 规范           |
+| Material Design 2     | `md2/`          | light.css / dark.css     | Google MD2 规范（新增）   |
+| Fluent Design 3       | `fluent3/`      | light.css / dark.css     | Microsoft Fluent 风格（新增）|
+| Liquid Glass          | `liquidglass/`  | light.css / dark.css     | 玻璃拟态 / 液态玻璃风格（新增）|
+
+### 新增主题使用说明
+
+1. 打开放映端页面（`/present/index.html?configId=...`）。
+2. 点击右上角 **设置** 按钮。
+3. 在"主题"下拉框中选择所需主题（如 *Fluent Design 3*、*Liquid Glass* 或 *Material Design 2*）。
+4. 通过"亮/暗色模式"开关切换亮色/暗色版本。
+5. 点击 **确定** 保存，偏好将存入 Cookie 供下次访问时自动恢复。
+
+### 添加自定义主题
+
+1. 在 `public/present/Styles/` 下新建目录（目录名只允许字母、数字、`_`、`-`）。
+2. 在该目录中提供 `light.css` 和 `dark.css`。
+3. 在 `public/present/Styles/profile.json` 的 `theme` 数组中追加一条记录：
+   ```json
+   { "name": "我的主题", "path": "my-theme" }
+   ```
+4. 同步修改 `present/Styles/profile.json`（本地开发用）。
+5. 重新部署（`npx wrangler deploy`）即可在放映端看到新主题选项。
 
 ## KV Key 设计（小数据量场景）
 

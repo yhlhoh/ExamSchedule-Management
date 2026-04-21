@@ -11,6 +11,18 @@
         {
             "name": "Material Design 3",
             "path": "md3"
+        },
+        {
+            "name": "Material Design 2",
+            "path": "md2"
+        },
+        {
+            "name": "Fluent Design 3",
+            "path": "fluent3"
+        },
+        {
+            "name": "Liquid Glass",
+            "path": "liquidglass"
         }
     ]
 }

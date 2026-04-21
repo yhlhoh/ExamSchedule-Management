@@ -1,0 +1,981 @@
+/* Fluent Design 3 Light Theme */
+/* Features: Mica material, soft shadows, rounded corners, subtle accent colors */
+
+#return-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 12px 24px;
+    font-size: 1rem;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(40px);
+    color: #201F1E;
+    border: 1px solid rgba(0, 0, 0, 0.0578);
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1001;
+}
+
+#return-btn:hover {
+    background: rgba(243, 242, 241, 0.9);
+    border-color: rgba(0, 0, 0, 0.0773);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+}
+
+body {
+    font-family: 'Segoe UI Variable', system-ui, -apple-system, 'Microsoft YaHei UI', 'PingFang SC', 'Noto Sans CJK SC', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #F3F3F3;
+    color: #201F1E;
+    overflow: auto;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+.top-btn-group {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    z-index: 1001;
+}
+
+#fullscreen-btn, #settings-btn, #reminder-settings-btn {
+    padding: 12px 24px;
+    font-size: 1rem;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(40px);
+    color: #201F1E;
+    border: 1px solid rgba(0, 0, 0, 0.0578);
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+}
+
+#fullscreen-btn::before {
+    content: "fullscreen";
+    font-family: 'Material Icons';
+    font-size: 20px;
+    margin-right: 8px;
+}
+
+#settings-btn::before {
+    content: "settings";
+    font-family: 'Material Icons';
+    font-size: 20px;
+    margin-right: 8px;
+}
+
+#reminder-settings-btn::before {
+    content: "notifications";
+    font-family: 'Material Icons';
+    font-size: 20px;
+    margin-right: 8px;
+}
+
+#fullscreen-btn:hover, #settings-btn:hover, #reminder-settings-btn:hover {
+    background: rgba(243, 242, 241, 0.9);
+    border-color: rgba(0, 0, 0, 0.0773);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+}
+
+.container {
+    padding: 24px;
+    max-width: 1400px;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(60px);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+h1 {
+    font-size: 3.5rem;
+    font-weight: 600;
+    text-align: left;
+    margin-bottom: 16px;
+    color: #201F1E;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#room {
+    font-size: 3.5rem;
+    font-weight: 600;
+    color: #201F1E;
+    margin-left: 20px;
+}
+
+#message {
+    font-size: 1.8rem;
+    color: #605E5C;
+    margin-bottom: 24px;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.left-column, .right-column {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.left-column {
+    width: 45%;
+}
+
+.right-column {
+    width: 50%;
+}
+
+.clock-section, .info-section, .right-column {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(40px);
+    padding: 24px;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.0578);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+#current-time {
+    font-size: 8rem;
+    text-align: center;
+    color: #201F1E;
+    margin: 0;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+#current-subject, #exam-timing, #remaining-time, #status {
+    font-size: 3rem;
+    margin: 16px 0;
+    text-align: left;
+    color: #201F1E;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 24px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(40px);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.0578);
+}
+
+th, td {
+    padding: 12px;
+    font-size: 1.8rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.0578);
+}
+
+th {
+    background: rgba(0, 0, 0, 0.03);
+    color: #201F1E;
+    font-weight: 600;
+}
+
+tr:hover {
+    background: rgba(0, 0, 0, 0.03);
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+.exam-status-tag {
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.exam-status-进行中 {
+    background: rgba(16, 124, 16, 0.15);
+    color: #107C10;
+}
+
+.exam-status-即将开始 {
+    background: rgba(247, 99, 12, 0.15);
+    color: #D83B01;
+}
+
+.exam-status-已结束 {
+    background: rgba(96, 94, 92, 0.15);
+    color: #605E5C;
+}
+
+.exam-status-未开始 {
+    background: rgba(255, 185, 0, 0.15);
+    color: #CA5010;
+}
+
+#settings-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(20px);
+}
+
+#settings-modal-content {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(60px);
+    padding: 32px 48px 32px 32px;
+    margin: 32px auto;
+    border-radius: 8px;
+    width: 600px;
+    max-height: 60vh;
+    overflow-y: auto;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.14);
+    border: 1px solid rgba(0, 0, 0, 0.0578);
+}
+
+#settings-modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+#settings-modal-content::-webkit-scrollbar-track {
+    background: transparent;
+    margin: 4px;
+}
+
+#settings-modal-content::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+}
+
+#settings-modal-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.25);
+}
+
+#settings-modal-content h3 {
+    margin: 0 0 24px;
+    color: #201F1E;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+#settings-modal-content label {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 16px 0;
+    font-size: 16px;
+    color: #201F1E;
+}
+
+#settings-modal-content input[type="number"],
+#settings-modal-content input[type="text"] {
+    font-size: 1.8rem;
+    padding: 12px 16px;
+    margin: 8px 0 24px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.0578);
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(40px);
+    color: #201F1E;
+    transition: all 0.15s ease;
+}
+
+#settings-modal-content input:focus {
+    outline: none;
+    border-color: #0078D4;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.button-group {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 32px;
+    position: relative;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 16px 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.0578);
+}
+
+#save-settings-btn, #close-settings-btn {
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    border: 1px solid rgba(0, 0, 0, 0.0578);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#save-settings-btn {
+    background: #0078D4;
+    color: #FFFFFF;
+    border-color: transparent;
+}
+
+#close-settings-btn {
+    background: rgba(0, 0, 0, 0.03);
+    color: #201F1E;
+}
+
+#save-settings-btn:hover, #close-settings-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.14);
+}
+
+#save-settings-btn:hover {
+    background: #106EBE;
+}
+
+#close-settings-btn:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+#save-settings-btn::before {
+    content: "✓";
+    font-size: 18px;
+}
+
+#close-settings-btn::before {
+    content: "✕";
+    font-size: 18px;
+}
+
+.error-container {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(196, 43, 28, 0.95);
+    backdrop-filter: blur(40px);
+    color: #FFFFFF;
+    padding: 16px 24px;
+    border-radius: 4px;
+    display: none;
+    z-index: 10001;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: slideUp 0.3s ease;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 52px;
+    height: 32px;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(40px);
+    transition: .2s;
+    border-radius: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.0578);
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 24px;
+    width: 24px;
+    left: 3px;
+    bottom: 3px;
+    background: #FFFFFF;
+    transition: .2s;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+input:checked + .slider {
+    background: #0078D4;
+    border-color: transparent;
+}
+
+input:checked + .slider:before {
+    transform: translateX(20px);
+}
+
+.config-file-container {
+    margin: 24px 0;
+    padding: 24px;
+    border: 1px solid rgba(0, 0, 0, 0.0578);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(40px);
+    transition: all 0.15s ease;
+}
+
+.config-file-container:hover {
+    border-color: #0078D4;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.config-file-container input[type="file"] {
+    max-width: 100%;
+    width: auto;
+    box-sizing: border-box;
+    padding: 12px;
+    border: 1px dashed rgba(0, 0, 0, 0.0773);
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.7);
+    color: #201F1E;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.config-file-container input[type="file"]::-webkit-file-upload-button {
+    padding: 8px 16px;
+    margin-right: 12px;
+    background: rgba(0, 0, 0, 0.03);
+    color: #201F1E;
+    border: 1px solid rgba(0, 0, 0, 0.0578);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.config-file-container input[type="file"]::-webkit-file-upload-button:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.file-hint {
+    margin-top: 12px;
+    font-size: 14px;
+    color: #605E5C;
+    line-height: 1.5;
+}
+
+.config-control-btn {
+    margin-top: 20px;
+    padding: 12px 28px;
+    background: rgba(0, 0, 0, 0.03);
+    color: #201F1E;
+    border: 1px solid rgba(0, 0, 0, 0.0578);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.config-control-btn:hover {
+    background: rgba(0, 0, 0, 0.05);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.14);
+}
+
+#export-config-btn {
+    margin-top: 12px;
+    padding: 12px 28px;
+    background: rgba(0, 0, 0, 0.03);
+    color: #201F1E;
+    border: 1px solid rgba(0, 0, 0, 0.0578);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#export-config-btn:hover {
+    background: rgba(0, 0, 0, 0.05);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.14);
+}
+
+.theme-toggle-container {
+    margin: 24px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+#theme-select {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 1.2rem;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(40px);
+    color: #201F1E;
+    border: 1px solid rgba(0, 0, 0, 0.0578);
+    border-radius: 4px;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23201F1E' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 16px;
+}
+
+#theme-select:hover {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: #0078D4;
+}
+
+#theme-select:focus {
+    outline: none;
+    border-color: #0078D4;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+#theme-select option {
+    background: #FAFAFA;
+    color: #201F1E;
+    padding: 12px;
+}
+
+.theme-toggle-container label {
+    font-size: 16px;
+    color: #201F1E;
+    margin-bottom: 8px;
+}
+
+.reminder-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(40px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 9999;
+}
+
+.reminder-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.reminder-content {
+    text-align: center;
+    animation: fadeIn 0.5s ease;
+}
+
+.reminder-title {
+    font-size: 5rem;
+    color: #FFFFFF;
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+.reminder-subtitle {
+    font-size: 3rem;
+    color: #FFAA44;
+    font-weight: 600;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.info-section {
+    position: relative;
+}
+
+.info-toggle-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(40px);
+    color: #201F1E;
+    border: 1px solid rgba(0, 0, 0, 0.0578);
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease;
+    z-index: 2;
+}
+
+.info-toggle-btn:hover {
+    background: rgba(243, 242, 241, 0.9);
+    transform: translateY(-1px);
+}
+
+.info-toggle-btn .material-icons,
+.info-toggle-btn .material-symbols-outlined {
+    font-size: 24px;
+}
+
+#paper-info {
+    font-size: 3rem;
+    margin: 16px 0;
+    text-align: left;
+    color: #201F1E;
+}
+
+.paper-count-container {
+    margin: 20px 0;
+}
+
+.paper-input-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
+    font-size: 2.5rem;
+}
+
+.count-control {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.count-btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-right: 8px;
+}
+
+.count-btn {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(0, 0, 0, 0.0578);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(40px);
+    color: #201F1E;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.count-btn:hover {
+    background: rgba(243, 242, 241, 0.9);
+    transform: translateY(-1px);
+}
+
+.count-btn .material-icons,
+.count-btn .material-symbols-outlined {
+    font-size: 20px;
+}
+
+.count-control input {
+    width: 60px;
+    padding: 5px;
+    font-size: 2rem;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(40px);
+    color: #201F1E;
+    border: 1px solid rgba(0, 0, 0, 0.0578);
+    border-radius: 4px;
+}
+
+.count-control input:focus {
+    outline: none;
+    border-color: #0078D4;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+#reminder-modal.settings-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(20px);
+}
+
+#reminder-modal-content.settings-panel {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    max-width: 95vw;
+    max-height: 80vh;
+    overflow-y: auto;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(60px);
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.14);
+    border: 1px solid rgba(0, 0, 0, 0.0578);
+    padding: 32px 48px 32px 32px;
+}
+
+#reminder-modal-content.settings-panel h3 {
+    margin-top: 0;
+    margin-bottom: 24px;
+    font-size: 24px;
+    font-weight: 600;
+    color: #201F1E;
+}
+
+.reminder-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-bottom: 24px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(40px);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.0578);
+    table-layout: fixed;
+}
+
+.reminder-table th, .reminder-table td {
+    padding: 16px 8px;
+    font-size: 1.4rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.0578);
+    vertical-align: middle;
+    word-break: break-all;
+}
+
+.reminder-table th {
+    background: rgba(0, 0, 0, 0.03);
+    color: #201F1E;
+    font-weight: 600;
+}
+
+.reminder-table tr:last-child td {
+    border-bottom: none;
+}
+
+.reminder-table th:nth-child(1),
+.reminder-table td:nth-child(1) {
+    width: 50%;
+    text-align: left;
+    padding-left: 20px;
+}
+.reminder-table th:nth-child(2),
+.reminder-table td:nth-child(2) {
+    width: 15%;
+}
+.reminder-table th:nth-child(3),
+.reminder-table td:nth-child(3) {
+    width: 25%;
+}
+.reminder-table th:nth-child(4),
+.reminder-table td:nth-child(4) {
+    width: 10%;
+}
+
+.reminder-table .action-btn {
+    padding: 8px 18px;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.03);
+    color: #201F1E;
+    border: 1px solid rgba(0, 0, 0, 0.0578);
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    margin: 0 auto;
+    display: block;
+}
+
+.reminder-table .action-btn:hover {
+    background: rgba(0, 0, 0, 0.05);
+    transform: translateY(-1px);
+}
+
+.reminder-btn {
+    padding: 8px 18px;
+    border-radius: 4px;
+    background: rgba(96, 94, 92, 0.15);
+    color: #201F1E;
+    border: 1px solid rgba(0, 0, 0, 0.0578);
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    margin: 0 auto;
+    display: block;
+}
+
+.reminder-btn:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.reminder-select {
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 1.1rem;
+    border: 1px solid rgba(0, 0, 0, 0.0578);
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(40px);
+    color: #201F1E;
+    transition: all 0.15s ease;
+    outline: none;
+}
+
+.reminder-select:focus {
+    border-color: #0078D4;
+}
+
+.reminder-time-input {
+    width: 80px;
+    padding: 8px 12px;
+    font-size: 1.1rem;
+    border: 1px solid rgba(0, 0, 0, 0.0578);
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(40px);
+    color: #201F1E;
+    transition: all 0.15s ease;
+    outline: none;
+    text-align: center;
+}
+
+.reminder-time-input:focus {
+    border-color: #0078D4;
+}
+
+#reminder-modal-content .button-group {
+    background: rgba(255, 255, 255, 0.9);
+    border-top: 1px solid rgba(0, 0, 0, 0.0578);
+    margin-top: 32px;
+    padding: 16px 0 0 0;
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    border-radius: 0 0 8px 8px;
+}
+
+#save-reminder-btn, #close-reminder-btn, #stop-audio-btn {
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    border: 1px solid rgba(0, 0, 0, 0.0578);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#save-reminder-btn {
+    background: #0078D4;
+    color: #FFFFFF;
+    border-color: transparent;
+}
+
+#close-reminder-btn {
+    background: rgba(0, 0, 0, 0.03);
+    color: #201F1E;
+}
+
+#stop-audio-btn {
+    background: #C42B1C;
+    color: #FFFFFF;
+    border-color: transparent;
+}
+
+#save-reminder-btn:hover, #close-reminder-btn:hover, #stop-audio-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.14);
+}
+
+#save-reminder-btn:hover {
+    background: #106EBE;
+}
+
+#close-reminder-btn:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+#stop-audio-btn:hover {
+    background: #A80000;
+}
+
+#paper-count-position {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 1.2rem;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(40px);
+    color: #201F1E;
+    border: 1px solid rgba(0, 0, 0, 0.0578);
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 8px;
+    margin-top: 4px;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+#paper-count-position:focus {
+    outline: none;
+    border-color: #0078D4;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.info-section .paper-count-container {
+    position: static !important;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+    padding: 0;
+    min-width: 0;
+    margin-top: 16px;
+    margin-bottom: 8px;
+}
+
