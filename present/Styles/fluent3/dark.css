@@ -1,0 +1,981 @@
+/* Fluent Design 3 Dark Theme */
+/* Features: Mica material, soft shadows, rounded corners, subtle accent colors */
+
+#return-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 12px 24px;
+    font-size: 1rem;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.0605);
+    backdrop-filter: blur(40px);
+    color: #FFFFFF;
+    border: 1px solid rgba(255, 255, 255, 0.0837);
+    border-radius: 4px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.14);
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1001;
+}
+
+#return-btn:hover {
+    background: rgba(255, 255, 255, 0.0837);
+    border-color: rgba(255, 255, 255, 0.1163);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+body {
+    font-family: 'Segoe UI Variable', system-ui, -apple-system, 'Microsoft YaHei UI', 'PingFang SC', 'Noto Sans CJK SC', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #202020;
+    color: #FFFFFF;
+    overflow: auto;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+.top-btn-group {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    z-index: 1001;
+}
+
+#fullscreen-btn, #settings-btn, #reminder-settings-btn {
+    padding: 12px 24px;
+    font-size: 1rem;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.0605);
+    backdrop-filter: blur(40px);
+    color: #FFFFFF;
+    border: 1px solid rgba(255, 255, 255, 0.0837);
+    border-radius: 4px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.14);
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+}
+
+#fullscreen-btn::before {
+    content: "fullscreen";
+    font-family: 'Material Icons';
+    font-size: 20px;
+    margin-right: 8px;
+}
+
+#settings-btn::before {
+    content: "settings";
+    font-family: 'Material Icons';
+    font-size: 20px;
+    margin-right: 8px;
+}
+
+#reminder-settings-btn::before {
+    content: "notifications";
+    font-family: 'Material Icons';
+    font-size: 20px;
+    margin-right: 8px;
+}
+
+#fullscreen-btn:hover, #settings-btn:hover, #reminder-settings-btn:hover {
+    background: rgba(255, 255, 255, 0.0837);
+    border-color: rgba(255, 255, 255, 0.1163);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+.container {
+    padding: 24px;
+    max-width: 1400px;
+    margin: auto;
+    background: rgba(44, 44, 44, 0.7);
+    backdrop-filter: blur(60px);
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.14);
+}
+
+h1 {
+    font-size: 3.5rem;
+    font-weight: 600;
+    text-align: left;
+    margin-bottom: 16px;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#room {
+    font-size: 3.5rem;
+    font-weight: 600;
+    color: #FFFFFF;
+    margin-left: 20px;
+}
+
+#message {
+    font-size: 1.8rem;
+    color: #C7C7C7;
+    margin-bottom: 24px;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.left-column, .right-column {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.left-column {
+    width: 45%;
+}
+
+.right-column {
+    width: 50%;
+}
+
+.clock-section, .info-section, .right-column {
+    background: rgba(255, 255, 255, 0.0326);
+    backdrop-filter: blur(40px);
+    padding: 24px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.0837);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+#current-time {
+    font-size: 8rem;
+    text-align: center;
+    color: #FFFFFF;
+    margin: 0;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+#current-subject, #exam-timing, #remaining-time, #status {
+    font-size: 3rem;
+    margin: 16px 0;
+    text-align: left;
+    color: #FFFFFF;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 24px;
+    background: rgba(255, 255, 255, 0.0326);
+    backdrop-filter: blur(40px);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.0837);
+}
+
+th, td {
+    padding: 12px;
+    font-size: 1.8rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.0605);
+}
+
+th {
+    background: rgba(255, 255, 255, 0.0605);
+    color: #FFFFFF;
+    font-weight: 600;
+}
+
+tr:hover {
+    background: rgba(255, 255, 255, 0.0605);
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+.exam-status-tag {
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.exam-status-进行中 {
+    background: rgba(16, 124, 16, 0.9);
+    color: #9BF00B;
+}
+
+.exam-status-即将开始 {
+    background: rgba(202, 80, 16, 0.9);
+    color: #FFAA44;
+}
+
+.exam-status-已结束 {
+    background: rgba(138, 138, 138, 0.7);
+    color: #E0E0E0;
+}
+
+.exam-status-未开始 {
+    background: rgba(255, 185, 0, 0.7);
+    color: #FFD60A;
+}
+
+#settings-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(20px);
+}
+
+#settings-modal-content {
+    background: rgba(44, 44, 44, 0.95);
+    backdrop-filter: blur(60px);
+    padding: 32px 48px 32px 32px;
+    margin: 32px auto;
+    border-radius: 8px;
+    width: 600px;
+    max-height: 60vh;
+    overflow-y: auto;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.0837);
+}
+
+#settings-modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+#settings-modal-content::-webkit-scrollbar-track {
+    background: transparent;
+    margin: 4px;
+}
+
+#settings-modal-content::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+#settings-modal-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+#settings-modal-content h3 {
+    margin: 0 0 24px;
+    color: #FFFFFF;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+#settings-modal-content label {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 16px 0;
+    font-size: 16px;
+    color: #FFFFFF;
+}
+
+#settings-modal-content input[type="number"],
+#settings-modal-content input[type="text"] {
+    font-size: 1.8rem;
+    padding: 12px 16px;
+    margin: 8px 0 24px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid rgba(255, 255, 255, 0.0837);
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.0605);
+    backdrop-filter: blur(40px);
+    color: #FFFFFF;
+    transition: all 0.15s ease;
+}
+
+#settings-modal-content input:focus {
+    outline: none;
+    border-color: rgba(118, 185, 237, 0.8);
+    background: rgba(255, 255, 255, 0.0837);
+}
+
+.button-group {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 32px;
+    position: relative;
+    background: rgba(44, 44, 44, 0.95);
+    padding: 16px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.0605);
+}
+
+#save-settings-btn, #close-settings-btn {
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.0837);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#save-settings-btn {
+    background: rgba(0, 103, 192, 0.9);
+    color: #FFFFFF;
+    border-color: transparent;
+}
+
+#close-settings-btn {
+    background: rgba(255, 255, 255, 0.0605);
+    color: #FFFFFF;
+}
+
+#save-settings-btn:hover, #close-settings-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#save-settings-btn:hover {
+    background: rgba(0, 120, 212, 0.95);
+}
+
+#close-settings-btn:hover {
+    background: rgba(255, 255, 255, 0.0837);
+}
+
+#save-settings-btn::before {
+    content: "✓";
+    font-size: 18px;
+}
+
+#close-settings-btn::before {
+    content: "✕";
+    font-size: 18px;
+}
+
+.error-container {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(196, 43, 28, 0.95);
+    backdrop-filter: blur(40px);
+    color: #FFFFFF;
+    padding: 16px 24px;
+    border-radius: 4px;
+    display: none;
+    z-index: 10001;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: slideUp 0.3s ease;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 52px;
+    height: 32px;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.0605);
+    backdrop-filter: blur(40px);
+    transition: .2s;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.0837);
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 24px;
+    width: 24px;
+    left: 3px;
+    bottom: 3px;
+    background: rgba(255, 255, 255, 0.9);
+    transition: .2s;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+input:checked + .slider {
+    background: rgba(0, 103, 192, 0.9);
+    border-color: transparent;
+}
+
+input:checked + .slider:before {
+    transform: translateX(20px);
+}
+
+.config-file-container {
+    margin: 24px 0;
+    padding: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.0837);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.0326);
+    backdrop-filter: blur(40px);
+    transition: all 0.15s ease;
+}
+
+.config-file-container:hover {
+    border-color: rgba(118, 185, 237, 0.6);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.config-file-container input[type="file"] {
+    max-width: 100%;
+    width: auto;
+    box-sizing: border-box;
+    padding: 12px;
+    border: 1px dashed rgba(255, 255, 255, 0.1163);
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.0605);
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.config-file-container input[type="file"]::-webkit-file-upload-button {
+    padding: 8px 16px;
+    margin-right: 12px;
+    background: rgba(255, 255, 255, 0.0837);
+    color: #FFFFFF;
+    border: 1px solid rgba(255, 255, 255, 0.0837);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.config-file-container input[type="file"]::-webkit-file-upload-button:hover {
+    background: rgba(255, 255, 255, 0.1163);
+}
+
+.file-hint {
+    margin-top: 12px;
+    font-size: 14px;
+    color: #C7C7C7;
+    line-height: 1.5;
+}
+
+.config-control-btn {
+    margin-top: 20px;
+    padding: 12px 28px;
+    background: rgba(255, 255, 255, 0.0605);
+    color: #FFFFFF;
+    border: 1px solid rgba(255, 255, 255, 0.0837);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.config-control-btn:hover {
+    background: rgba(255, 255, 255, 0.0837);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#export-config-btn {
+    margin-top: 12px;
+    padding: 12px 28px;
+    background: rgba(255, 255, 255, 0.0605);
+    color: #FFFFFF;
+    border: 1px solid rgba(255, 255, 255, 0.0837);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#export-config-btn:hover {
+    background: rgba(255, 255, 255, 0.0837);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.theme-toggle-container {
+    margin: 24px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+#theme-select {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 1.2rem;
+    background: rgba(255, 255, 255, 0.0605);
+    backdrop-filter: blur(40px);
+    color: #FFFFFF;
+    border: 1px solid rgba(255, 255, 255, 0.0837);
+    border-radius: 4px;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 16px;
+}
+
+#theme-select:hover {
+    background: rgba(255, 255, 255, 0.0837);
+    border-color: rgba(118, 185, 237, 0.6);
+}
+
+#theme-select:focus {
+    outline: none;
+    border-color: rgba(118, 185, 237, 0.8);
+    background: rgba(255, 255, 255, 0.0837);
+}
+
+#theme-select option {
+    background: #2C2C2C;
+    color: #FFFFFF;
+    padding: 12px;
+}
+
+.theme-toggle-container label {
+    font-size: 16px;
+    color: #FFFFFF;
+    margin-bottom: 8px;
+}
+
+.reminder-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(40px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 9999;
+}
+
+.reminder-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.reminder-content {
+    text-align: center;
+    animation: fadeIn 0.5s ease;
+}
+
+.reminder-title {
+    font-size: 5rem;
+    color: #FFFFFF;
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+.reminder-subtitle {
+    font-size: 3rem;
+    color: #FFAA44;
+    font-weight: 600;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.info-section {
+    position: relative;
+}
+
+.info-toggle-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: rgba(255, 255, 255, 0.0605);
+    backdrop-filter: blur(40px);
+    color: #FFFFFF;
+    border: 1px solid rgba(255, 255, 255, 0.0837);
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease;
+    z-index: 2;
+}
+
+.info-toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.0837);
+    transform: translateY(-1px);
+}
+
+.info-toggle-btn .material-icons,
+.info-toggle-btn .material-symbols-outlined {
+    font-size: 24px;
+}
+
+#paper-info {
+    font-size: 3rem;
+    margin: 16px 0;
+    text-align: left;
+    color: #FFFFFF;
+}
+
+.paper-count-container {
+    margin: 20px 0;
+}
+
+.paper-input-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
+    font-size: 2.5rem;
+}
+
+.count-control {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.count-btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-right: 8px;
+}
+
+.count-btn {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.0837);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.0605);
+    backdrop-filter: blur(40px);
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.count-btn:hover {
+    background: rgba(255, 255, 255, 0.0837);
+    transform: translateY(-1px);
+}
+
+.count-btn .material-icons,
+.count-btn .material-symbols-outlined {
+    font-size: 20px;
+}
+
+.count-control input {
+    width: 60px;
+    padding: 5px;
+    font-size: 2rem;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.0605);
+    backdrop-filter: blur(40px);
+    color: #FFFFFF;
+    border: 1px solid rgba(255, 255, 255, 0.0837);
+    border-radius: 4px;
+}
+
+.count-control input:focus {
+    outline: none;
+    border-color: rgba(118, 185, 237, 0.8);
+    background: rgba(255, 255, 255, 0.0837);
+}
+
+#reminder-modal.settings-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(20px);
+}
+
+#reminder-modal-content.settings-panel {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    max-width: 95vw;
+    max-height: 80vh;
+    overflow-y: auto;
+    background: rgba(44, 44, 44, 0.95);
+    backdrop-filter: blur(60px);
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.0837);
+    padding: 32px 48px 32px 32px;
+}
+
+#reminder-modal-content.settings-panel h3 {
+    margin-top: 0;
+    margin-bottom: 24px;
+    font-size: 24px;
+    font-weight: 600;
+    color: #FFFFFF;
+}
+
+.reminder-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-bottom: 24px;
+    background: rgba(255, 255, 255, 0.0326);
+    backdrop-filter: blur(40px);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.0837);
+    table-layout: fixed;
+}
+
+.reminder-table th, .reminder-table td {
+    padding: 16px 8px;
+    font-size: 1.4rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.0605);
+    vertical-align: middle;
+    word-break: break-all;
+}
+
+.reminder-table th {
+    background: rgba(255, 255, 255, 0.0605);
+    color: #FFFFFF;
+    font-weight: 600;
+}
+
+.reminder-table tr:last-child td {
+    border-bottom: none;
+}
+
+.reminder-table th:nth-child(1),
+.reminder-table td:nth-child(1) {
+    width: 50%;
+    text-align: left;
+    padding-left: 20px;
+}
+.reminder-table th:nth-child(2),
+.reminder-table td:nth-child(2) {
+    width: 15%;
+}
+.reminder-table th:nth-child(3),
+.reminder-table td:nth-child(3) {
+    width: 25%;
+}
+.reminder-table th:nth-child(4),
+.reminder-table td:nth-child(4) {
+    width: 10%;
+}
+
+.reminder-table .action-btn {
+    padding: 8px 18px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.0605);
+    color: #FFFFFF;
+    border: 1px solid rgba(255, 255, 255, 0.0837);
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    margin: 0 auto;
+    display: block;
+}
+
+.reminder-table .action-btn:hover {
+    background: rgba(255, 255, 255, 0.0837);
+    transform: translateY(-1px);
+}
+
+.reminder-btn {
+    padding: 8px 18px;
+    border-radius: 4px;
+    background: rgba(138, 138, 138, 0.7);
+    color: #FFFFFF;
+    border: 1px solid rgba(255, 255, 255, 0.0837);
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    margin: 0 auto;
+    display: block;
+}
+
+.reminder-btn:hover {
+    background: rgba(255, 255, 255, 0.0837);
+}
+
+.reminder-select {
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 1.1rem;
+    border: 1px solid rgba(255, 255, 255, 0.0837);
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.0605);
+    backdrop-filter: blur(40px);
+    color: #FFFFFF;
+    transition: all 0.15s ease;
+    outline: none;
+}
+
+.reminder-select:focus {
+    border-color: rgba(118, 185, 237, 0.8);
+}
+
+.reminder-time-input {
+    width: 80px;
+    padding: 8px 12px;
+    font-size: 1.1rem;
+    border: 1px solid rgba(255, 255, 255, 0.0837);
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.0605);
+    backdrop-filter: blur(40px);
+    color: #FFFFFF;
+    transition: all 0.15s ease;
+    outline: none;
+    text-align: center;
+}
+
+.reminder-time-input:focus {
+    border-color: rgba(118, 185, 237, 0.8);
+}
+
+#reminder-modal-content .button-group {
+    background: rgba(44, 44, 44, 0.95);
+    border-top: 1px solid rgba(255, 255, 255, 0.0605);
+    margin-top: 32px;
+    padding: 16px 0 0 0;
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    border-radius: 0 0 8px 8px;
+}
+
+#save-reminder-btn, #close-reminder-btn, #stop-audio-btn {
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.0837);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#save-reminder-btn {
+    background: rgba(0, 103, 192, 0.9);
+    color: #FFFFFF;
+    border-color: transparent;
+}
+
+#close-reminder-btn {
+    background: rgba(255, 255, 255, 0.0605);
+    color: #FFFFFF;
+}
+
+#stop-audio-btn {
+    background: rgba(196, 43, 28, 0.9);
+    color: #FFFFFF;
+    border-color: transparent;
+}
+
+#save-reminder-btn:hover, #close-reminder-btn:hover, #stop-audio-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#save-reminder-btn:hover {
+    background: rgba(0, 120, 212, 0.95);
+}
+
+#close-reminder-btn:hover {
+    background: rgba(255, 255, 255, 0.0837);
+}
+
+#stop-audio-btn:hover {
+    background: rgba(220, 53, 34, 0.95);
+}
+
+#paper-count-position {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 1.2rem;
+    background: rgba(255, 255, 255, 0.0605);
+    backdrop-filter: blur(40px);
+    color: #FFFFFF;
+    border: 1px solid rgba(255, 255, 255, 0.0837);
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 8px;
+    margin-top: 4px;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+#paper-count-position:focus {
+    outline: none;
+    border-color: rgba(118, 185, 237, 0.8);
+    background: rgba(255, 255, 255, 0.0837);
+}
+
+.info-section .paper-count-container {
+    position: static !important;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+    padding: 0;
+    min-width: 0;
+    margin-top: 16px;
+    margin-bottom: 8px;
+}
+
