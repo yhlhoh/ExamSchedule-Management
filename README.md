@@ -9,7 +9,6 @@
 
 - 主页查询配置：`/` 或 `/index.php`
 - 放映端：`/present/index.html?configId=...`
-- Liquid Glass React 放映端：`/present/liquid-glass.html?configId=...`
 - API：`/api/get_config.php?id=...`
 - 后台：
   - 登录：`/admin/index.php`
@@ -65,7 +64,6 @@ npx wrangler deploy
 src/worker.ts                   # Workers 入口、路由、KV 数据访问层、页面渲染
 public/assets                   # 原站静态资源（CSS 等）
 public/present                  # 放映端静态页面与脚本
-public/present/liquid-glass-react # Liquid Glass React 独立主题资源
 public/present/Styles/          # 主题 CSS 目录（同步于 present/Styles/）
 wrangler.toml                   # Workers + KV + static assets 配置
 ```
@@ -92,20 +90,6 @@ wrangler.toml                   # Workers + KV + static assets 配置
 3. 在"主题"下拉框中选择所需主题（如 *Fluent Design 3*、*Liquid Glass* 或 *Material Design 2*）。
 4. 通过"亮/暗色模式"开关切换亮色/暗色版本。
 5. 点击 **确定** 保存，偏好将存入 Cookie 供下次访问时自动恢复。
-
-### Liquid Glass React 独立展示入口
-
-- 入口：`/present/liquid-glass.html?configId=你的配置ID`
-- 基于 `rdev/liquid-glass-react`（npm 包 `liquid-glass-react`）实现玻璃拟态卡片与看板展示。
-- 默认主题与原放映页不受影响；该页面为独立入口（按需使用）。
-- 调试示例：`/present/liquid-glass.html?demo=1`（无需后端数据，便于预览样式）。
-- 构建命令（修改 Liquid Glass React 源码后执行）：
-  ```bash
-  npm install
-  npm run build:liquid-glass
-  ```
-
-> `npm run build:liquid-glass` 会将 `present/liquid-glass-react/liquid-glass.src.js` 打包为浏览器可直接加载的 `present/liquid-glass-react/liquid-glass.js`，并同步到 `public/present/` 供 Workers 静态资源发布。
 
 ### 添加自定义主题
 
