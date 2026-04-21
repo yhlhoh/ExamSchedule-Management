@@ -156,8 +156,7 @@ a.back-link:hover {
 }
 
 @media (prefers-reduced-motion: reduce) {
-    * {
-        animation: none !important;
-        transition: none !important;
+    a.back-link {
+        transition: none;
     }
 }
